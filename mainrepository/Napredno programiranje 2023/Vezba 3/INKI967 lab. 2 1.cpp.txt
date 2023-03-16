@@ -1,0 +1,21 @@
+#include <stdio.h>     
+#include <time.h>      
+int main ()
+{
+  time_t now;
+  struct tm newyear;
+  double seconds;
+ time(&now);  
+newyear = *localtime(&now);
+  newyear.tm_hour = 0; newyear.tm_min = 0; newyear.tm_sec = 0;
+  newyear.tm_mon = 0;  newyear.tm_mday = 1;
+ seconds = difftime(now,mktime(&newyear));
+  printf ("%.f seconds since new year in the current timezone.\n", seconds);
+return 0;
+}
+//Кодот во овај  пример е програма која пресметува колку време поминало од 1 јануари 2000 година во тековната временска зона.
+//  Кодот прво го добива тековното време со повикување на time() и потоа ја складира оваа вредност во newyear.
+//  Потоа го одзема mktime(newyear) од сега за да добие секунди.
+//  Конечно, отпечатува „0,00 секунди“ бидејќи нема милисекунди во овој повик на функција.
+ // Функцијата difftime зема две вредности како влез: претходна вредност и подоцнежна вредност, и ја враќа нивната разлика во секунди (или која било единица што ќе ја наведете).
+//  За да може оваа функција да работи правилно, двете вредности мора да бидат од типот time_t или struct tm.

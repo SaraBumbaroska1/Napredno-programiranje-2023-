@@ -1,0 +1,53 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+using namespace std;
+const int DECK_SIZE = 54;
+const int SUIT_SIZE = 13;
+string suits[4] = {"Hearts", "Diamonds", "Clubs", "Spades"};
+string ranks[SUIT_SIZE] = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+string joker = "Joker";
+void shuffleDeck(string deck[], int size) {
+    for (int i = 0; i < size; i++) {
+        int j = rand() % size;
+        string temp = deck[i];
+        deck[i] = deck[j];
+        deck[j] = temp;
+    }
+}
+int main() {
+    string deck[DECK_SIZE];
+    int index = 0;
+
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < SUIT_SIZE; j++) {
+            deck[index] = ranks[j] + " of " + suits[i];
+            index++;
+        }
+    }
+
+    deck[52] = joker;
+    deck[53] = joker;
+    srand(time(NULL));
+
+    cout << "Unshuffled Deck:" << endl;
+    for (int i = 0; i < DECK_SIZE; i++) {
+        cout << deck[i] << endl;
+    }
+
+    shuffleDeck(deck, DECK_SIZE);
+   
+    cout << "\nShuffled:" << endl;
+    for (int i = 0; i < DECK_SIZE; i++) {
+        cout << deck[i] << endl;
+    }
+    return 0;
+}
+//Кодот е едноставна програма која меша низа картички. Во првата линија се креира низата и се доделува на „палубата“.
+//Во втората линија се поставува јамка што ќе се повторува низ сите 54 карти во палубата, доделувајќи ја секоја картичка на својот сопствен индекс.
+//Потоа, за секое повторување на јамката, се отпечатува вредноста на deck[i] проследено со „of“ и потоа „suits“.
+//Во третата линија се создава и друга јамка која ќе се повторува низ сите 4 костуми по редослед: срца, дијаманти, клубови, лопати.
+//И за секое повторување на оваа јамка ќе отпечати рангови[j] + „од“ + одговара[i].
+//Тоа е затоа што има 13 рангови (Ас-Крал) и 4 одела (Срца-Клубови-Дијаманти-Ликови).
+//Кодот меша една палуба од карти.

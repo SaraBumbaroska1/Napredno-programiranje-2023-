@@ -1,0 +1,23 @@
+#include <cstdlib>
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main(int argc, char *argv[]) {
+    
+    char pesna[30] = "Ferrari";
+    char *p = &pesna[0];
+    
+    cout << "Pesna: " << pesna << "\n\n"; 
+    cout << "Cela sodrzina (p): " << p << endl; 
+    cout << "Pocetna pozicija na sodrzinata (*p): " << *p << endl; 
+    cout << "Adresa na pocetna sodrzina: " << (int*)p << endl; 
+    cout << "\n";
+    
+    p += 23; 
+    cout << "Ime na izveduvac (James Hype): " << p <<endl;
+    cout << "Pocetna pozicija na segasnata sodrzina (*p): " << *p << endl; 
+    cout << "Adresa na koja pocnuva segasnata sodrzhina: " << (int*)p << endl;
+    
+    return 0;
+}

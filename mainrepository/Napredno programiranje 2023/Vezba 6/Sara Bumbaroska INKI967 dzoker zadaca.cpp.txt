@@ -1,0 +1,97 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <vector>
+
+using namespace std;
+
+enum Suit { HEARTS, DIAMONDS, CLUBS, SPADES };
+enum Rank { ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING };
+const int NUM_RANKS = 13;
+const int NUM_SUITS = 4;
+const int NUM_CARDS = 52 + 2;
+
+class Card {
+public:
+    Card(Rank rank = ACE, Suit suit = HEARTS) : rank(rank), suit(suit) {}
+    Rank getRank() const { return rank; }
+    Suit getSuit() const { return suit; }
+    friend ostream& operator<<(ostream& os, const Card& card);
+private:
+    Rank rank;
+    Suit suit;
+};
+
+ostream& operator<<(ostream& os, const Card& card) {
+    string ranks[NUM_RANKS] = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" };
+    string suits[NUM_SUITS] = { "Hearts", "Diamonds", "Clubs", "Spades" };
+    os << ranks[card.rank] << " of " << suits[card.suit];
+    return os;
+}
+
+class Deck {
+public:
+    Deck() {
+        for (int i = 0; i < NUM_RANKS; i++) {
+            for (int j = 0; j < NUM_SUITS; j++) {
+                cards.push_back(Card(static_cast<Rank>(i), static_cast<Suit>(j)));
+            }
+        }
+        cards.push_back(Card()); // add Joker 1
+        cards.push_back(Card()); // add Joker 2
+    }
+
+    void shuffle() {
+        srand(time(NULL));
+        for (int i = 0; i < NUM_CARDS; i++) {
+            int randomIndex = rand() % NUM_CARDS;
+            Card temp = cards[i];
+            cards[i] = cards[randomIndex];
+            cards[randomIndex] = temp;
+        }
+    }
+
+    vector<Card> deal(int numPlayers) {
+        vector<Card> playerCards;
+        int cardsPerPlayer = NUM_CARDS / numPlayers;
+        for (int i = 0; i < cardsPerPlayer; i++) {
+            for (int j = 0; j < numPlayers; j++) {
+                playerCards.push_back(cards[j * cardsPerPlayer + i]);
+            }
+        }
+        return playerCards;
+    }
+
+private:
+    vector<Card> cards;
+};
+
+int main() {
+    Deck deck;
+    cout << "Deck before shuffling:\n";
+    for (int i = 0; i < NUM_CARDS; i++) {
+        cout << deck.deal(1)[0] << endl;
+    }
+
+    deck.shuffle();
+
+    cout << "\nDeck after shuffling:\n";
+    for (int i = 0; i < NUM_CARDS; i++) {
+        cout << deck.deal(1)[0] << endl;
+    }
+
+    vector<Card> player1Cards = deck.deal(4);
+    vector<Card> player2Cards = deck.deal(4);
+    vector<Card> player3Cards = deck.deal(4);
+    vector<Card> player4Cards = deck.deal(4);
+return 0;
+}
+//Кодот започнува со декларирање на Deck класа.
+//За класата Deck не земаат аргументи и се создава празен шпил од карти.
+//Следната линија е главната функција, која ја започнуваме со создавање на нова инстанца од класата Deck наречена дек.
+//Ова го правиме со користење на стандардниот конструктор за типот на објектот (Deck).
+//Следно, ги печатиме сите картички во оваа новосоздадена палуба пред да ги измешаме.
+//Откако ќе ја испечатите секоја картичка, таа печати „Дек по мешање:“ проследено со целата нејзина содржина повторно за да покажеме дека тие се измешани по случаен редослед.
+//Потоа, создаваме низа наречена PlayCards која ќе ги држи картичките на нашите играчи и потоа ќе ги измеша со помош на rand() % NUM_CARDS како и NUM_CARDS / numPlayers за да се добие рандомизиран број помеѓу 1-52 во зависност од тоа колку играчи играат.
+//Потоа ги повторуваме овие вредности и ја туркаме назад картата на секој играч на сопствената низа за да може да се делат еден по еден од таму па натаму додека сите не дојдат на ред или додека нема останати карти во нашата оригинална палуба со кои треба да се справиме. 
+//(во тој случај само ќе го врати она што беше првично ставено во PlayCards).

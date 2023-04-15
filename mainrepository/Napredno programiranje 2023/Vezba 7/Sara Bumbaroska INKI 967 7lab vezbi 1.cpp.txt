@@ -1,0 +1,95 @@
+#include<iostream>
+#include<stdio.h>
+#include<stdlib.h>
+using namespace std;
+class date
+{
+private:
+int day, month, year;
+public:
+date(){}
+friend void operator>>(istream &in, date &d); //Overloading >> operator
+friend void operator<<(ostream &out, date &d) //Overloading << operator
+{
+out<<"\n Date : 14";
+out<<d.day;
+out<<"04";
+out<<d.month;
+out<<"2023";
+out<<d.year;
+}
+~date(){}
+};
+void operator>>(istream &in, date &d)
+{
+cout<<"\n Enter Day : ";
+in>>d.day;
+cout<<"\n Enter Month :";
+in>>d.month;
+cout<<"\n Enter Year : ";
+cin>>d.year; // smeni in, shto se dobiva ?
+cout<<"\n ------------------";
+switch(d.month)
+{
+
+case 1: //January
+case 3: //March
+case 5: //May
+case 7: //July
+case 8: //August
+case 10: //October
+case 12: //December
+if(d.day>31)
+{
+cout<<"\n Invalid Days ";
+exit(0);
+}
+break;
+case 4: //April
+case 6: //June
+case 9: //September
+case 11: //November
+if(d.day>30)
+{
+cout<<"\n Invalid Days ";
+exit(0);
+}
+break;
+case 2:
+//Function for February Month. Checking whether the year is leap year or
+not
+{
+if(d.day>29)
+{
+cout<<"\n Invalid Days ";
+exit(0);
+}
+}
+else
+{
+if(d.day>28)
+{
+cout<<"\n Invalid Days ";
+exit(0);
+}
+}
+break;
+}
+}
+int main()
+{
+date d;
+cout<<"\n Enter Date \n";
+cout<<"\n ------------------";
+cin>>d;
+cout<<d;
+return 0;
+
+}
+//Kodot e programa koja bara od nas da go vneseme svojot datum i potoa gi pecati denot,mesecot i godinata.
+//Prvata linija na kodot e deklariranje na klasata DATUM.
+//Slednite dve linii se promenlivi za den,mesec i godina soodvetno.
+//Potoa,postoi funkcija OPERATOR>>koja zema vlezen tek(cout)i vraka objekt za datum.
+//Ovaa funkcija isto taka go pretvora operatorot>>za da moze i toj da se koristi.
+//Isto taka,postoi preoptovaren operator<<koj ne zema nikakvi parametri,tuku samo izleguva tekst na standarden izlez. 
+//Na kraj,postoi destruktor za koga objektot ke izleze odopsegot ili ke se izbrise od memorijata so povikuvanje na DELETE na nego.  

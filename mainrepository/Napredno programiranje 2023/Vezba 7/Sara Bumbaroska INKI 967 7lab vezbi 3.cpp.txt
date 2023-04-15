@@ -1,0 +1,62 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+class Shape {
+protected:
+    float width, height;
+public:
+    void setDimensions(float w, float h) {
+        cout << "Setting the Dimensions using the parent Class: Shape\n";
+        cout << "The dimensions are: " << w << " and " << h << "\n\n";
+        width = w;
+        height = h;
+    }
+};
+
+class Rectangle : public Shape {
+public:
+    float area() {
+        return (width * height);
+    }
+
+    float volume(float depth) {
+        return (width * height * depth);
+    }
+};
+
+class Triangle : public Shape {
+private:
+    float hypotenuse;
+
+public:
+    Triangle(float a, float b) {
+        width = a;
+        height = b;
+        hypotenuse = sqrt(a*a + b*b);
+    }
+
+    float area() {
+        return (width * height / 2);
+    }
+
+    float getHypotenuse() {
+        return hypotenuse;
+    }
+};
+
+int main() {
+    cout << "\n\n";
+    Rectangle rectangle;
+    Triangle triangle(96,7);
+
+    rectangle.setDimensions(96,7);
+    cout << "Area of the Rectangle computed using Rectangle Class is : " << rectangle.area() << "\n";
+    cout << "Volume of the Rectangle computed using Rectangle Class is : " << rectangle.volume(4) << "\n\n";
+
+    cout << "Area of the Triangle computed using Triangle Class is: " << triangle.area() << "\n";
+    cout << "Hypotenuse of the Triangle is : " << triangle.getHypotenuse() << "\n\n";
+
+    return 0;
+}

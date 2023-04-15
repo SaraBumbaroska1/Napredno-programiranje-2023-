@@ -1,0 +1,94 @@
+#include <iostream>
+using namespace std;
+
+class operations {
+    //declaring member variables
+public:
+    int num1, num2;
+
+    //defining member function or methods
+public:
+    void input() {
+        cout << " \n";
+        cin >> num1 >> num2;
+        cout << "\n";
+        cout << " \n";
+        cout << "1. Addition\n";
+        cout << "2. Subtraction\n";
+        cout << "3. Multiplication\n";
+        cout << "4. Division\n";
+        cout << "5. num1num2\n";
+        int choice;
+        cin >> choice;
+        cout << "\n";
+        switch(choice){
+            case 1:
+                addition();
+                break;
+            case 2:
+                subtraction();
+                break;
+            case 3:
+                multiplication();
+                break;
+            case 4:
+                division();
+                break;
+            case 5:
+                num1num2();
+                break;
+            default:
+                cout << "Invalid choice\n";
+                break;
+        }
+    }
+
+    void addition() {
+        cout << "Addition = " << num1 + num2;
+        cout << "\n";
+    }
+
+    void subtraction() {
+        cout << "Subtraction = " << num1 - num2;
+        cout << "\n";
+    }
+
+    void multiplication() {
+        cout << "Multiplication = " << num1 * num2;
+        cout << "\n";
+    }
+
+    void division() {
+        cout << "Division = " << (float) num1 / num2;
+        cout << "\n";
+    }
+
+    void num1num2() {
+        cout << "num1num2 = " << num1 + num2;
+        cout << "\n";
+    }
+};
+int main()
+{
+    cout << " \n\n";
+    cout << " \n\n";
+    operations op;
+    cout << "\n\n";
+    op.input();
+    cout << "\n\n";
+    op.addition();
+    cout << "\n\n";
+    op.subtraction();
+    cout << "\n\n";
+    op.multiplication();
+    cout << "\n\n";
+    op.division();
+    cout << "\n\n\n\n";
+    return 0;
+}
+//Kodot zapocnuva so deklaracija na dve celobrojni promenlivi,num1 i num2.
+//Slednata linija e funkcionalen povik koj pecati poraka so koja se bara vlez od korisnikot. 
+//Ova se prosleduva so uste eden funkciski povik koj bara od nas da se izbere opcija sto treba da ja izvrsi. 
+//Prvata opcija, DODAJ e prosledena so izjavata cout koja go prikazuva tekstot veleki VNESETE DVA BROJA ZA DA IZVRSITE OPERACII NA:... 
+//Potoa sleduva cin>> num1 >> num2;koj gi cita vrednostite vneseni od korisnikot i gi skladira vo nivnite soodvetni promenlivi.
+//?onecno, ima cout << "\n"; koj emituva tekst na ekranot veleki IZBERI OPCIJA ZA IZVRSUVANJE:...

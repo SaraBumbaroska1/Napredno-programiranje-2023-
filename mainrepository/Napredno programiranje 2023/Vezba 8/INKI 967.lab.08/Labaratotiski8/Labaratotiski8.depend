@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1682353025 source:c:\users\user\desktop\mainrepository\napredno programiranje 2023\vezba 8\inki 967.lab.08\labaratotiski8\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<ctime>
+

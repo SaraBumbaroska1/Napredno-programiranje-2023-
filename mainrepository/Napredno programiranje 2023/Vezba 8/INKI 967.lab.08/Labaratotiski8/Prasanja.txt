@@ -1,0 +1,23 @@
+"1. Safirot ima: a. crna boja b. crvena boja c. sina boja" 
+
+"2. Entomologija e nauka koja izucuva: a. zivotni b. insekti c. rastenija" 
+
+"3. Najgolem okean vo svetot e: a. Tihi b. Indiski c. Atlanski" 
+
+"4. Najbrzoto zivotno vo svetot e: a. lav b. gepard c. panter" 
+
+"5. Zborot 'selfi' pripagja vo: a. Varvarizam b. Turcizam c. Neologizam d.Arhaizam" 
+   
+"6.Prvata kniga na makedonski jazik ja otpecatil: a.Krste p Misirkov b.Joakim Krcovski c.Gorgija Pulevski d.Kiril Pejcinovik d.Konstantin Miladinov"
+
+"7.Koj od slednite zborovi pokazuva pokazna zamenka: a.ti b.nasi c.vasi d.ovoj"
+
+"8.Atila bil vladetel na : a.osmanliite b.persijcite c.hunite d.rimjanite"
+
+"9.Koi vitamini se najvazni za sportistite: a.vitamin b b.vitamin a c.vitamin d d.vitamin c e.vitamin b "
+
+"10.Koi od navedenite gradovi se gradovi vo Makedonija: a.Bitola b.Amsterdam c.Atina d.Dubai e.Skopje "
+
+"11.Koi od navedenite produkti sodrzat zelezo: a.Cveklo b.Kakao c.Zelka d.Kromid e.Piperka"
+
+"12.Morski ribi se: a.Pastrmka b.Skusa c.Oslic d.Tuna e.Krap "

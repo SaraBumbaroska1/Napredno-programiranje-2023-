@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+int main()
+{
+    const int SIZE = 10;
+    const int MAX_ROUNDS = 3;
+    int position = 0;
+    int target_position = SIZE - 1;
+    int num_rounds = 0;
+    bool game_over = false;
+    
+    srand(time(0));
+
+    cout << "Dobredojdovte vo Nelutise covece!" << endl;
+    cout << "Pomestuvajte go piunceto od pocetokot kon krajot " << MAX_ROUNDS << " kruga ili pomalce." << endl;
+
+    while (!game_over && num_rounds < MAX_ROUNDS)
+    {
+        cout << "Runda " << num_rounds + 1 << ":" << endl;
+        int roll = rand() % 6 + 1;
+        position += roll;
+        if (position > target_position)
+        {
+            int overshoot = position - target_position;
+            cout << "Ti zavrti " << roll << " i go pomina krajot " << overshoot << " prostori." << endl;
+            position = target_position - overshoot;
+        }
+        cout << "Ti zavrti  " << roll << " i  postigna " << position << "." << endl;
+        if (position == target_position)
+        {
+            game_over = true;
+            cout << "Cestitki!Stignavte do krajot " << num_rounds + 1 << " rundi." << endl;
+        }
+        num_rounds++;
+    }
+
+    if (!game_over)
+    {
+        cout << "Izvinete,no ne stignavte do celta " << MAX_ROUNDS << " rundi." << endl;
+    }
+
+    return 0;
+}
